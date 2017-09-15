@@ -1,14 +1,20 @@
 import java.util.Scanner;
 
-/*
-Classe Cliente.
-
- * */
+/*Autor: Edlane de Oliveira
+ * Curso: Telemática
+ * Instituição: IFPB Campus Campina Grande
+ * Período: 5º
+ * 
+ * 
+ * Nesta classe realizo crio todos os métodos da classe Cliente.
+ */
 public class Cliente {
 	private String nome;
 	private String cpf;
-	private int telefone;
+	private int dataDeNascimento;
+	private String telefone;
 	private String email;
+	private String endereco;
 	private String senha;
 	private String login;
 	
@@ -16,18 +22,20 @@ public class Cliente {
 	
 	
 	//contrutor de Cliente
-	public Cliente(String nome, String cpf, int telefone, String email, String login, String senha){
+	public Cliente(String nome, String cpf, int dataDeNascimento, String telefone, String email, String endereco, String login, String senha){
 		this.nome= nome;
 		this.cpf= cpf;
+		this.dataDeNascimento=dataDeNascimento;
 		this.telefone= telefone;
 		this.email= email;
+		this.endereco=endereco;
 		this.login=login;
 		this.senha=senha;
 	}
 	
 	// retorna os dados informados pelo cliente
 	String getDados(){
-		return "Os dados informados foram os seguintes:\n \nNome: " + this.nome + "\nCPF: " + this.cpf + "\nTelefone: " + this.telefone + "\nEmail: " + this.email;
+		return "Os dados informados foram os seguintes:\n \nNome: " + this.nome + "\nCPF: " + this.cpf + "\nData de Nascimento: " + this.dataDeNascimento + "\nTelefone: " + this.telefone + "\nEmail: " + this.email + "\nEndereço: " +this.endereco;
 	}
 	
 	
@@ -41,9 +49,16 @@ public class Cliente {
 	// alterando o telefone caso o cliente deseje altera-lo
 	void setTelefone(int telefone){
 		System.out.println("Digite seu novo nº de telefone: ");
-		int t= entrada.nextInt();
+		String t= entrada.next();
 		this.telefone= t;
 	}
+	
+	// alterando o endereço caso o cliente deseje altera-lo
+		void setEndereco(int endereco){
+			System.out.println("Digite seu novo endereço: ");
+			String en= entrada.next();
+			this.endereco= en;
+		}
 	
 	// alterando a senha caso o cliente deseje altera-la
 	void setSenha(String senha){
