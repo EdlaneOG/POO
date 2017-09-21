@@ -78,7 +78,7 @@ public class TesteMain {
 
 											if (sis.retornarDadosDoEvento(nomeEvento) != "nao encontrado"){
 												System.out.println(sis.retornarDadosDoEvento(nomeEvento));
-												
+												ing.getDados();
 												/*
 												 * Comprando ingresso via cartao de crédito ou boleto
 												 */
@@ -93,7 +93,10 @@ public class TesteMain {
 													  * Pagamento via cartão de crédito
 													  */
 													 if (pagamento == 1){//Se for via cartão, faça:
-														 op.validacaoCartao();
+														 opCartao.validacaoCartao();
+													 }else if (pagamento == 2) {
+														 opCartao.emissaaoDeBoleto();
+														 
 													 }
 													 
 												 }

@@ -1,5 +1,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Random;
+import java.util.Random;
 
 /*Autor: Edlane de Oliveira
  * Curso: Telemática
@@ -21,7 +24,7 @@ public class Sistema {
 	Scanner entrada = new Scanner(System.in);
 	private ArrayList <Cliente> listaClientes;
 	private ArrayList <Evento> eventos;
-	
+	Random r = new Random();
 	
 	
 	//contrutor de sistema
@@ -77,12 +80,31 @@ public class Sistema {
 			String horario= entrada.next();
 			System.out.println("Informe o endereço: ");
 			String endereco= entrada.next();
-			Evento e= new Evento(nome,tipo,dataDeRealizacao,horario,endereco);
+			System.out.println("Informe o valor do ingresso - Estudante: ");
+			float ingreEstudante= entrada.nextFloat();
+			System.out.println("Informe o valor do ingresso- Inteira: ");
+			float ingreInteira= entrada.nextFloat();
+			System.out.println("Informe a quantidade de ingressos a serem vendidos: ");
+			int ingrevendas= entrada.nextInt();
+			System.out.println("Informe os setores que terão no local do evento: ");
+			menuSetor();
+			String setores= entrada.next();
+			Evento e= new Evento(nome,tipo,dataDeRealizacao,horario,endereco, ingreEstudante, ingreInteira, ingrevendas, setores);
+			int id= r.nextInt(100); 
+			Ingresso i= new Ingresso(id,ingreEstudante, ingreInteira, ingrevendas, setores);
 			eventos.add(e);
 			return "\n\n++++++++++++++++++++++++++++++++++++++\nCadastro realizado com sucesso!\n++++++++++++++++++++++++++++++++++++++";
 		}//String cadastrarEvento()
 		
 	
+		
+		//Menu setor
+		void menuSetor(){
+		    	System.out.println("	Pista			");
+		    	System.out.println("	Área VIP		");
+		    	System.out.println("	Camarote		");
+		}//void MenuInicial()
+		
 	
 		//Menu inicial
 	void menuInicial(){

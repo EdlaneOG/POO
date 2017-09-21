@@ -1,26 +1,30 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Ingresso {
-	private float precoEstudante;
-	private float precoInteira;
+	protected float precoEstudante;
+	protected float precoInteira;
 	private int id;
 	private String setor;
 	private int quantidadeParaVenda;
 
 	//contrutor de ingressos
-		public Ingresso(float precoEstudante, float precoInteira, int id, String setor, int quantidadeParaVenda){
+		public Ingresso(int id, float ingreEstudante, float ingreInteira, int ingrevendas, String setor){
+			this.id=id;
 			this.precoEstudante=precoEstudante;
 			this.precoInteira=precoInteira;
-			this.id=id;
 			this.setor=setor;
-			this.quantidadeParaVenda=quantidadeParaVenda;
+			this.quantidadeParaVenda=ingrevendas;
+			this.setor=setor;
 		}
 	
 	
-	int quantIngresso(){
+		String getDados(){
+			return "\nValor do ingresso- Estudante: "+ this.precoEstudante + "\nValor do ingresso- Inteira: "+this.precoInteira + "\nSetor: " +this.setor ;
+				
+		}
+	int getquantIngresso(){
 		return this. quantidadeParaVenda;
 	}
 	
@@ -40,8 +44,10 @@ public class Ingresso {
 		this.precoInteira=preInt;
 	}
 	
-	
-	
-	
-	
+	int ingressosVendidos(){
+		int quant= (this.quantidadeParaVenda -1);
+		return quant;
+	}
+
 }
+
