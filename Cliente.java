@@ -1,28 +1,27 @@
-import java.util.Scanner;
-
 /*Autor: Edlane de Oliveira
- * Curso: Telemática
- * Instituição: IFPB Campus Campina Grande
- * Período: 5º
- * 
- * 
- * Nesta classe realizo crio todos os métodos da classe Cliente.
- */
+	 * Curso: Telemática
+	 * Instituição: IFPB Campus Campina Grande
+	 * Período: 5º
+	 * 
+*/
+
+
 public class Cliente {
-	private String nome;
-	private String cpf;
-	private int dataDeNascimento;
-	private String telefone;
-	private String email;
-	private String endereco;
-	private String senha;
-	private String login;
-	
-	Scanner entrada = new Scanner(System.in);
 	
 	
+		private String nome;
+		private String cpf;
+		private String dataDeNascimento;
+		private int telefone;
+		private String email;
+		private String endereco;
+		private String senha;
+		private String login;
+
+
+
 	//contrutor de Cliente
-	public Cliente(String nome, String cpf, int dataDeNascimento, String telefone, String email, String endereco, String login, String senha){
+	public Cliente(String nome, String cpf, String dataDeNascimento, int telefone, String email, String endereco, String login, String senha){	
 		this.nome= nome;
 		this.cpf= cpf;
 		this.dataDeNascimento=dataDeNascimento;
@@ -33,38 +32,25 @@ public class Cliente {
 		this.senha=senha;
 	}
 	
-	// retorna os dados informados pelo cliente
-	String getDados(){
-		return "Os dados informados foram os seguintes:\n \nNome: " + this.nome + "\nCPF: " + this.cpf + "\nData de Nascimento: " + this.dataDeNascimento + "\nTelefone: " + this.telefone + "\nEmail: " + this.email + "\nEndereço: " +this.endereco;
-	}
-	
-	
+
 	// alterando o email caso o cliente deseje altera-lo
 	 void setEmail(String email){
-		System.out.println("Digite seu novo E-mail: ");
-		String e= entrada.next();
-		this.email= e;
+		this.email= email;
 	}
 	
 	// alterando o telefone caso o cliente deseje altera-lo
-	void setTelefone(int telefone){
-		System.out.println("Digite seu novo nº de telefone: ");
-		String t= entrada.next();
-		this.telefone= t;
+	void setTelefone(int tel){
+		this.telefone= tel;
 	}
 	
 	// alterando o endereço caso o cliente deseje altera-lo
-		void setEndereco(int endereco){
-			System.out.println("Digite seu novo endereço: ");
-			String en= entrada.next();
-			this.endereco= en;
-		}
+	void setEndereco(String end){
+		this.endereco= end;
+	}
 	
 	// alterando a senha caso o cliente deseje altera-la
-	void setSenha(String senha){
-		System.out.println("Digite sua nova senha: ");
-		String s= entrada.next();
-		this.senha= s;
+	void setSenha(String sen){
+		this.senha= sen;
 	}
 	
 	// retorna o login do cliente
@@ -76,6 +62,14 @@ public class Cliente {
 	 public	String getSenha(){
 			return this.senha;
 		}
-	
-	
+	 
+	// retorna o endereco
+		 public	String getEndereco(){
+				return this.endereco;
+			}
+		 
+	// retorna o Telefone
+		 public	int getTelefone(){
+				return this.telefone;
+		 }
 }

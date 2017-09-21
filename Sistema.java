@@ -7,7 +7,14 @@ import java.util.ArrayList;
  * Período: 5º
  * 
  * 
- * Nesta classe realizo crio todos os métodos da classe Sistema.
+ * Nesta classe crio todos os métodos da classe Sistema.
+ * Utilizei esta classe também para fins de interface textual, 
+ * pois não achei viável criar uma classe InterfaceTextual sendo que os menus correspondem
+ * ao sistema. Além disso, estava tendo dificuldade de relacionar uma classe InterfaceTextual 
+ *com os cadastros que eu estava precisando realizar.
+ *
+ * Esta e a classe OperadoraDoCartao foram as únicas classes que utilizei o Scanner 
+ * para capturar os dados do declado.
  */
 
 public class Sistema {
@@ -29,10 +36,10 @@ public class Sistema {
 		String nome= entrada.next();
 		System.out.println("Informe seu CPF: ");
 		String cpf= entrada.next();
-		System.out.println("Informe sua data de nascimento (XXyyZZZZ): ");
-		int dataDeNascimento= entrada.nextInt();
+		System.out.println("Informe sua data de nascimento (XX-XX-XXXX): ");
+		String dataDeNascimento= entrada.next();
 		System.out.println("Informe seu telefone: ");
-		String telefone= entrada.next();
+		int telefone= entrada.nextInt();
 		System.out.println("Informe seu E-mail: ");
 		String email= entrada.next();
 		System.out.println("Informe seu endereço: ");
@@ -47,21 +54,24 @@ public class Sistema {
 	}//String cadastrarUsuario()
 	
 	
+	void menuTipoDoEvento(){
+		System.out.println("\n==================================================");
+		System.out.println("	Tipo do evento       				");
+		System.out.println("====================================================");
+    	System.out.println("	1- Esporte		");
+    	System.out.println("	2- Filme		");
+    	System.out.println("	3- Peça		    ");
+    	System.out.println("	4- Show			");
+	}
+	
 	//cadastrando evento no sistema
 		String cadastrarEvento(){
 			System.out.println("Informe o nome do evento: ");
 			String nome= entrada.next();
-			System.out.println("\n==================================================");
-			System.out.println("	Tipo do evento       				");
-			System.out.println("====================================================");
-	    	System.out.println("	1- Esporte		");
-	    	System.out.println("	2- Filme		");
-	    	System.out.println("	3- Peça		    ");
-	    	System.out.println("	4- Show			");
+			menuTipoDoEvento();
 			System.out.println("Informe o Tipo do evento: ");
 			int tipo= entrada.nextInt();
-//duvida: como fazer herança com evento sendo a mãe e os tipos de evento sendo as folhas?			
-			System.out.println("Informe sua data de realziação (XX-yy-ZZZZ): ");
+			System.out.println("Informe sua data de realização: ");
 			String dataDeRealizacao= entrada.next();
 			System.out.println("Informe o Horário: ");
 			String horario= entrada.next();
@@ -75,37 +85,72 @@ public class Sistema {
 	
 	
 		//Menu inicial
-	public int primeiroMenu(){
+	void menuInicial(){
 	       	System.out.println("\n====================================================");
-	       	System.out.println(" 	Sistema de compra de Ingressos				");
+	       	System.out.println(" 	Sistema de venda de Ingressos				");
 	       	System.out.println("====================================================");
 	    	System.out.println("	1- Autenticação		");
 	    	System.out.println("	2- Cadastro		    ");
 	    	System.out.println("	3- Sair		        ");
-	    	System.out.println("\n\nQual das opcões acima você seja realizar?");
-	    	int opcaoMenu= entrada.nextInt();
-	   	return opcaoMenu;
-	}//public int menuAutenticacao()
+	}//void MenuInicial()
 		
+	
+	
+	
 	//Menu secundário (após autenticar)
-		public int segundoMenu(){
+		void menuSecundario(){
 		       	System.out.println("\n====================================================");
-		       	System.out.println(" 	Usuário autenticado com sucesso!			");
+		       	System.out.println(" 	Seja Bem-vindo,	");
 		       	System.out.println("====================================================");
 		    	System.out.println("	1- Cadastrar evento		");
 		    	System.out.println("	2- Buscar evento	    ");
-		    	System.out.println("	3- Voltar		        ");
-		    	System.out.println("\n\nQual das opcões acima você seja realizar?");
-		    	int opcaoMenu= entrada.nextInt();
-		   	return opcaoMenu;
-		}//public int menuAutenticacao()	
+		    	System.out.println("	3- Alterar dados- Cliente	");
+		    	System.out.println("	4- Alterar dados de evento  ");
+		    	System.out.println("	5- Voltar		        ");
+		}//void MenuSecundario()	
 
 	
+	//Menu forma de parcelamento
+		void menuFormaDeParcelamento(){
+			System.out.println("Informe a forma de parcelamento: 		 ");
+	    	System.out.println("	1- Direto no cartão");
+	    	System.out.println("	2- Parcelado em 2x sem juros	  	 ");
+	    	System.out.println("	3- Parcelado em 3x sem juros	  	 ");	
+		}
+	
+	//solicitando a forma de pagamento
+	void menuFormaDePagamento(){
+		System.out.println("Informe a forma de pagamento: ");
+    	System.out.println("	1- Cartao de crédito ");
+    	System.out.println("	2- Boleto	     	 ");
+	}
+	
+	
+	void menuAlterarDadosCliente(){
+    	System.out.println("	1- Endereço  ");
+    	System.out.println("	2- Telefone	 ");
+    	System.out.println("	3- E-mail    ");
+    	System.out.println("	4- Senha 	 ");
+    	System.out.println("	5- Voltar 	 ");
+	}
+	
+	
+	void menuAlterarDadosEvento(){
+    	System.out.println("	1- Nome  			 ");
+    	System.out.println("	2- dataDeRealizacao	 ");
+    	System.out.println("	3- Horário           ");
+    	System.out.println("	4- Endereço 	 	 ");
+    	System.out.println("	5- Voltar 	 		 ");
+	}
+	
+	//solicitando se o cliente deseja comprar ingresso
+	void menuIngresso(){
+		System.out.println("1- Sim ");
+		System.out.println("2- Não ");
+	}		
+			
 	//verificando se o login informado é igual ao login cadastrado
-	int autenticacaoLogin(){
-		System.out.println("Informe seu login: ");
-		String lg = entrada.next();
-		
+	int autenticacaoLogin(String lg){
 		int op=100;
 		for(Cliente c: listaClientes){
 			if (c.getLogin().equals(lg)){
@@ -119,10 +164,9 @@ public class Sistema {
 	
 	
 	//verificando se a senha informada é igual a senha cadastrada
-	int autenticacaoSenha(){
-		System.out.println("Informe sua senha: ");
-		String sn = entrada.next();
-		
+	int autenticacaoSenha(String sn){
+	//	System.out.println("Informe sua senha: ");
+		//String sn = entrada.next();
 		int op=100;
 		for(Cliente c: listaClientes){
 			if (c.getSenha().equals(sn)){
@@ -135,9 +179,7 @@ public class Sistema {
 	}//int autenticacaoSenha()
 	
 	
-	int buscarEvento(){
-		System.out.println("Digite o nome do evento: ");
-		String n = entrada.next();
+	int buscarEvento(String n){
 		int op=100;
 		for(Evento e: eventos){
 			if (e.getNome().equals(n)){
@@ -149,7 +191,17 @@ public class Sistema {
 		return op;
 	}//String buscarEvento()
 	
-	
+	String retornarDadosDoEvento(String n){
+		String op= " ";
+		for(Evento e: eventos){
+			if (e.getNome().equals(n)){
+			op= e.getDados();
+			}else{
+				op="nao encontrado";
+			}
+		}
+		return op;
+	}
 	
 	
 	
