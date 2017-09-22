@@ -1,0 +1,58 @@
+@startuml
+
+skinparam packegeStyle rectangle
+left to right direction
+
+'----------------------------------------------------------------------
+'Atores do sistema
+:Usuário/Cliente: as cli
+:Empresa \n(Admin do Sistema) : as admin
+:Operadora \nde cartão : as ope_cre
+
+
+
+'----------------------------------------------------------------------
+rectangle "Sistema de venda de ingressos"{
+
+'Casos de uso
+(Realizar cadastro) as rea_cad
+(Realizar autenticação) as rea_aut
+(Comprar ingresso) as comp_ing
+(Gerenciar evento) as ger_eve
+(Buscar evento) as bus_eve
+(Autenticar/Autorizar \nvenda) as aut_ven
+(Escolher forma de pagamento) as for_pag
+(Pagar emitindo boleto) as emi_bol
+(Pagar com cartão) as car
+
+
+'--------------------------------------------------------------------
+'Relacionamentos
+
+cli -- rea_cad
+
+cli -- bus_eve
+cli -- comp_ing
+
+'bus_eve <.. comp_ing         :<<extends>>
+comp_ing ..> rea_aut         :<<include>>
+ger_eve  ..> rea_aut         :<<include>>
+comp_ing ..> for_pag         :<<include>>
+for_pag <.. emi_bol          :<<extends>>
+for_pag <.. car              :<<extends>>
+car ..> aut_ven              :<<include>>
+
+
+admin -- bus_eve
+admin -- ger_eve
+'---------------------------------------------------------------------
+
+ope_cre -- aut_ven
+note right of (aut_ven)
+Em caso de
+pagamento com
+cartão de credito
+ou débito
+end note
+}
+@enduml

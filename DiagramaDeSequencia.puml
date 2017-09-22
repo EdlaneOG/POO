@@ -1,0 +1,38 @@
+@startuml
+
+
+
+[-> sis : Comprar ingresso
+
+participant ":Sistema" as sis
+participant ":Evento" as eve
+participant ":Ingresso" as ing
+participant ":OperadoraDoCartao" as pag
+
+
+
+
+
+
+activate sis
+sis --> eve :  buscarEvento()
+activate eve
+eve --> ing : comprarIngresso()
+activate ing
+ing --> pag : realizarCompra()
+activate pag
+
+
+pag -->pag : AutorizarVenda()
+
+
+pag --> ing: AutorizarVenda()
+deactivate pag
+ing -->eve : EmitirIngresso()
+deactivate ing
+eve -->sis: CompraRealizada()
+deactivate eve
+deactivate sis
+
+
+@enduml

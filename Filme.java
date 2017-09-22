@@ -15,6 +15,7 @@ public class Filme extends Evento{
 		return "\nSinopse: " +this.sinopse+ "\nElenco: " +this.elenco+ "\nCensura: " +this.censura;
 	}
 	
+	
 	String getSinopse(){
 		return this.sinopse;
 	}

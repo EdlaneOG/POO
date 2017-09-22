@@ -1,0 +1,177 @@
+@startuml
+skinparam packegeStyle rectangle
+left to right direction
+
+'-------------------------------------------------------------------------------
+'Classes
+'-------------------------------------------------------------------------------
+abstract class UsuárioCliente
+abstract class Sistema
+abstract class Ingresso
+abstract class Evento
+abstract class Esporte
+abstract class Filme
+abstract class Peça
+abstract class Show
+abstract class OperadoraDoCartao
+
+
+'-------------------------------------------------------------------------------
+'Atributos das classes
+'-------------------------------------------------------------------------------
+
+class UsuárioCliente {
+-Nome: String
+-cpf: String
+-endereço: String
+-telefone: String
+-email: String
+-DataDeNascimento: String
+-login: String
+-Senha: String
+
++selEndereco()
++setEmail()
++setTelefone()
++setSenha()
++getLogin()
++getSenha()
++getEndereco()
++getTelefone()
+}
+'-------------------------------------------------------------------------------
+
+class Ingresso {
+-precoEstudante: double
+-precoInteira: double
+-id: int
+-quantidadeParaVenda: int
+
++getDados()
++getquantIngresso()
++getPrecoEstudante()
++getPrecoInteira()
++setPrecoEstudante(double preEst)
++setPrecoInteira(double preInt)
++getingressosVendidos()
+}
+'-------------------------------------------------------------------------------
+
+class Evento {
+-nome:String
+-tipo:int
+-dataDeRealizacao:String
+-horario:String
+-endereco:String
+-precoEstudante:String
+-precoInteira:double
+-ingreVendas:int
+
++getDados()
++getNome()
++getprecoEstudante()
++getprecoInteira()
++setEndereco(String ende)
++gettipoEvento()()
++ setdataDeRealizacao(String data)
++setHorario(String hr)
+}
+'-------------------------------------------------------------------------------
+
+class Esporte {
+-equipe:String
+
++getDados()
+}
+'-------------------------------------------------------------------------------
+
+class Filme {
+-sinopse:String
+-elenco:String
+-censura:String
+
+
++getDados()
++getSinopse()
++getElenco()
++getCensura()
+}
+'-------------------------------------------------------------------------------
+
+class Peça {
+-companhia: String
+-elenco: String
+-Elenco: String
+-censura: String
+
++getDados()
++getCompanhia()
++getElenco()
++getCensura()
+}
+'-------------------------------------------------------------------------------
+
+class Show {
+-artista: String
+-estiloMusicala: String
+
+
++getDados()
++getartista()
++getestiloMusical()
+}
+'-------------------------------------------------------------------------------
+
+class OperadoraDoCartao{
+-NumDoCartao: String
+-NomeDoTitular: String
+-DataDeVencimento: Date
+-Valor: String
+
+
++SolicitaAutorizaçãoDaOperadora()
+}
+'-------------------------------------------------------------------------------
+
+class Sistema{
+-numero: int
+-titular: String
+-codigo: int
+
++validacaoCartao()
++ parcelamento()
++getNome()
++getNumero()
++getCodigo()
+
+}
+'-------------------------------------------------------------------------------
+
+class Sistema{
+-listaClientes: ArrayList<>
+-eventos: ArrayList<>
+
++cadastrarUsuario()
++cadastrarEvento()
++emissaaoDeBoleto()
++autenticacaoLogin(String login)
++autenticacaoLogin(String senha)
++buscarEvento(String n)
++retornarDadosDoEvento(String n)
+}
+
+
+'-------------------------------------------------------------------------------
+'Relacionamentos
+'-------------------------------------------------------------------------------
+UsuárioCliente -- Sistema: acessa o
+Evento -- Ingresso : possui um
+Sistema -- Evento : contém
+Esporte --|> Evento
+Filme --|> Evento
+Show --|> Evento
+Peça --|> Evento
+Ingresso -- OperadoraDoCartao : pode ser pago via
+
+
+@enduml
