@@ -31,7 +31,7 @@ public class TesteMain {
 		 * Instanciei esse construtor de Evento pois quando "busco evento", 
 		 * eu retorno os dados do evento com "e.getDados()", e para isso eu precisava passar um evento "e"., 
 		 */
-		Evento e = new Evento( "Music Festival", 4, "08-09-2017", "21:30", "Av. Manoel Tavares", 10.00, 20.00,50,"Pista");
+		Evento e = new Evento( "Music Festival", 4, "08-09-2017", "21:30", "Av. Manoel Tavares", 10.00, 20.00,50);
 		/*float precoEstudante, float preInteira, int ingreVendas, String setores
 		 * A finalidade de instanciar a opcaoCartao foi com o intuito de criar um banco
 		 * de dados de cartoes para a Operadora De Cartão (quando for realizada a compra via cartão, 
@@ -40,7 +40,7 @@ public class TesteMain {
 		 * uma mensagem dizendo que o cadastro não existe é exibida.  
 		 */
 		OperadoraDoCartao opCartao = new OperadoraDoCartao(11223344,"Edlane",555);
-		Ingresso ing = new Ingresso (1, 1, 1, 1,"--");
+		Ingresso ing = new Ingresso (1, 1, 1, 1);
 		Scanner entrada = new Scanner(System.in);
 		
 		
@@ -97,22 +97,32 @@ public class TesteMain {
 											String nomeEvento= entrada.next();
 
 											if (sis.retornarDadosDoEvento(nomeEvento) != "nao encontrado"){
-												System.out.println(sis.retornarDadosDoEvento(nomeEvento));
-												ing.getDados();
+												
+												if(sis.retornartipoEvento(nomeEvento) == 1){
+													System.out.println(sis.retornarDadosDoEvento(nomeEvento) + sis.retornarDadosEsporte(nomeEvento));
+												}else if(sis.retornartipoEvento(nomeEvento) == 2){
+													System.out.println(sis.retornarDadosDoEvento(nomeEvento) + sis.retornarDadosFilme(nomeEvento));
+												}if(sis.retornartipoEvento(nomeEvento) == 3){
+													System.out.println(sis.retornarDadosDoEvento(nomeEvento) + sis.retornarDadosPeca(nomeEvento));
+												}if(sis.retornartipoEvento(nomeEvento) == 4){
+													System.out.println(sis.retornarDadosDoEvento(nomeEvento) + sis.retornarDadosShow(nomeEvento));
+												}
+											ing.getDados();
+												
+												
+												
+												
 												/*
 												 * Comprando ingresso via cartao de crédito ou boleto
 												 */
 												 
 												 System.out.println("\n\nDeseja comprar ingresso? ");
 												 sis.menuIngresso();
-												 System.out.println("Digite a opção desejada ");
+												 System.out.println("Digite a opção desejada: ");
 												 int ingresso= entrada.nextInt();
 												 if (ingresso == 1){
 													 System.out.println("Informe a quantidade de ingressos que deseja comprar: ");
 													 int quantingresso= entrada.nextInt();
-													 System.out.println("Informe o setor para o qual deseja comprar os ingressos: ");
-													 System.out.println("Opção: "+sis.retornarsetores(nomeEvento));
-													 String setoringresso= entrada.next();
 													 System.out.println("Informe o tipo de ingresso que seja comprar: \n\n1-Estudante \n2-Inteira ");
 													 int tipoingresso= entrada.nextInt();
 													 sis.menuFormaDePagamento();
@@ -132,13 +142,16 @@ public class TesteMain {
 													 }
 													 
 												 }else{
-													 break;
+													 System.out.println("\n");
 												 }
 											}else{
 												System.out.println("Nome incorreto ou evento não está cadastrado!");
 											}//else (sis.buscarEvento(nomeEvento) == 1)	
 										}//else if (opcao==2)							
 								
+										
+										
+										
 								
 										
 										
@@ -176,6 +189,9 @@ public class TesteMain {
 										    	}else{
 										    		System.out.println("Senha atual incorreta!");
 										    	}										  	
+										
+										    	
+										    	
 										/*
 										* Caso nenhuma opção válida seja selecionada, a seguinte mensagem será exibida:
 										*/
@@ -183,6 +199,9 @@ public class TesteMain {
 											System.out.println("Opção não existe! Digite uma opção válida!");
 										}
 									
+										
+										
+										
 																	
 										/*
 										 * Voltando para o menu anterior
@@ -191,6 +210,8 @@ public class TesteMain {
 											break;
 									}//else if (opcao==4)	
 								
+										
+										
 										
 										
 										/*
@@ -229,12 +250,17 @@ public class TesteMain {
 				System.out.println(sis.cadastrarUsuario());
 			
 				
+				
+				
 			/*
 			 * Sair do sistema
 			 */	
 			}else if ( opcao == 3 ){
 				System.out.println("Encerrando o sistema...");
 			        break;
+			        
+			        
+			        
 			        
 			/*
 			 * Caso nenhuma opção válida seja selecionada, a seguinte mensagem será exibida:

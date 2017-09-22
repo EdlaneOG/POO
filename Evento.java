@@ -9,13 +9,12 @@ public class Evento {
 	protected double precoEstudante;
 	protected double precoInteira;
 	private int ingreVendas;
-	private String setores;
-	
+
 //	private ArrayList <Ingresso> ingressos;
 	
 	
 	//contrutor de evento
-	public Evento(String nome, int tipo, String dataDeRealizacao, String horario, String endereco, double precoEstudante, double precoInteira, int ingreVendas, String setores){
+	public Evento(String nome, int tipo, String dataDeRealizacao, String horario, String endereco, double precoEstudante, double precoInteira, int ingreVendas){
 		this.nome= nome;
 		this.tipo= tipo;
 		this.dataDeRealizacao=dataDeRealizacao;
@@ -24,7 +23,7 @@ public class Evento {
 		this.precoEstudante=precoEstudante;
 		this.precoInteira=precoInteira;
 		this.ingreVendas=ingreVendas;
-		this.setores= setores;
+		
 		}
 	
 	// retorna os dados informados sobre o evento
@@ -64,11 +63,10 @@ public class Evento {
 		this.horario= data;
 	}
 	
-	String getsetores(){
-		return this.setores;
+	
+	int gettipoEvento(){
+		return this.tipo;
 	}
-	
-	
 	
 
 	

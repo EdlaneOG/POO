@@ -24,13 +24,21 @@ public class Sistema {
 	Scanner entrada = new Scanner(System.in);
 	private ArrayList <Cliente> listaClientes;
 	private ArrayList <Evento> eventos;
+	private ArrayList <Evento> filme;
+	private ArrayList <Evento> show;
+	private ArrayList <Evento> peca;
+	private ArrayList <Evento> esporte;
 	Random r = new Random();
-	
+	private int tipoDoEvento;
 	
 	//contrutor de sistema
 	public Sistema(){
 		this.listaClientes = new ArrayList<Cliente>();
 		this.eventos = new ArrayList<Evento>();
+		this.filme = new ArrayList<Evento>();
+		this.show = new ArrayList<Evento>();
+		this.peca = new ArrayList<Evento>();
+		this.esporte = new ArrayList<Evento>();
 	}
 	
 	//cadastrando um usuario
@@ -73,7 +81,7 @@ public class Sistema {
 			String nome= entrada.next();
 			menuTipoDoEvento();
 			System.out.println("Informe o Tipo do evento: ");
-			int tipo= entrada.nextInt();
+			this.tipoDoEvento= entrada.nextInt();
 			System.out.println("Informe sua data de realização: ");
 			String dataDeRealizacao= entrada.next();
 			System.out.println("Informe o Horário: ");
@@ -86,24 +94,59 @@ public class Sistema {
 			float ingreInteira= entrada.nextFloat();
 			System.out.println("Informe a quantidade de ingressos a serem vendidos: ");
 			int ingrevendas= entrada.nextInt();
-			System.out.println("Informe os setores que terão no local do evento (Ex.:setor1 setor2 setor3): ");
-			menuSetor();
-			String setores= entrada.next();
-			Evento e= new Evento(nome,tipo,dataDeRealizacao,horario,endereco, ingreEstudante, ingreInteira, ingrevendas, setores);
+			Evento e= new Evento(nome,tipoDoEvento,dataDeRealizacao,horario,endereco, ingreEstudante, ingreInteira, ingrevendas);
 			int id= r.nextInt(100); 
-			Ingresso i= new Ingresso(id,ingreEstudante, ingreInteira, ingrevendas, setores);
+			Ingresso i= new Ingresso(id,ingreEstudante, ingreInteira, ingrevendas);
 			eventos.add(e);
 			
+			if( tipoDoEvento == 1){
+				System.out.println("Informe o primeiro nome dos intergrantes da equipe: ");
+				String nomes=entrada.next();
+				Evento esp = new Esporte(nome,tipoDoEvento,dataDeRealizacao,horario,endereco, ingreEstudante, ingreInteira, ingrevendas,nomes);	
+				esporte.add(esp);
+			}else if( tipoDoEvento == 2){
+				System.out.println("Informe o primeiro nome dos intergarntes do elenco: ");
+				String artistas=entrada.next();
+				System.out.println("Descreva a sinopse do filme: ");
+				String sinopse=entrada.next();
+				System.out.println("Indique a censura -idade- para o filme: ");
+				String censura=entrada.next();
+				Evento f = new Filme(nome,tipoDoEvento,dataDeRealizacao,horario,endereco, ingreEstudante, ingreInteira, ingrevendas,artistas,sinopse,censura);	
+				filme.add(f);
+			}else  if( tipoDoEvento == 3){
+				System.out.println("Informe a companhia: ");
+				String companhia=entrada.next();
+				System.out.println("Informe o primeiro nome dos intergrantes do elenco: ");
+				String artistas=entrada.next();
+				System.out.println("Indique a censura -idade- para o filme: ");
+				String censura=entrada.next();
+				Evento p = new Peca(nome,tipoDoEvento,dataDeRealizacao,horario,endereco, ingreEstudante, ingreInteira, ingrevendas,artistas,companhia,censura);	
+				peca.add(p);
+			}else  if( tipoDoEvento == 4){
+				System.out.println("Informe o nome dos artistas: ");
+				String artista=entrada.next();
+				System.out.println("Indique o estilo musical: ");
+				String estMusical=entrada.next();
+				Evento s = new Show(nome,tipoDoEvento,dataDeRealizacao,horario,endereco, ingreEstudante, ingreInteira, ingrevendas,artista,estMusical);	
+				show.add(s);
+			}else{
+				System.out.println("Opção inválida!");
+			}
 			return "\n\n++++++++++++++++++++++++++++++++++++++\nCadastro realizado com sucesso!\n++++++++++++++++++++++++++++++++++++++";
 		}//String cadastrarEvento()
 		
 		
 		
+		
+		
+		
+		
+		
 		//Menu setor
 		void menuSetor(){
-		    	System.out.println("	Pista			");
-		    	System.out.println("	Área VIP		");
-		    	System.out.println("	Camarote		");
+		    	System.out.println("	1-Pista			");
+		    	System.out.println("	2-Área VIP		");
+		    	System.out.println("	3-Camarote		");
 		}//void MenuInicial()
 		
 	
@@ -249,7 +292,7 @@ public class Sistema {
 		String op= " ";
 		for(Evento e: eventos){
 			if (e.getNome().equals(n)){
-			op= e.getDados();
+				op=e.getDados();			
 			}else{
 				op="nao encontrado";
 			}
@@ -257,11 +300,12 @@ public class Sistema {
 		return op;
 	}
 	
+	
 	double retornarprecoEstudante(String n){
 		double op=100;
 		for(Evento e: eventos){
 			if (e.getNome().equals(n)){
-			op= e.getprecoEstudante();
+				op= e.getprecoEstudante();
 			}else{
 				op=0;
 			}
@@ -274,7 +318,7 @@ public class Sistema {
 		double op=100;
 		for(Evento e: eventos){
 			if (e.getNome().equals(n)){
-			op= e.getprecoInteira();
+				op= e.getprecoInteira();
 			}else{
 				op=0;
 			}
@@ -282,15 +326,70 @@ public class Sistema {
 		return op;
 	}
 	
-	String retornarsetores(String n){
-		String op="";
+	
+	
+	int retornartipoEvento(String n){
+		int op=100;
 		for(Evento e: eventos){
 			if (e.getNome().equals(n)){
-			op= e.getsetores();
+				op= e.gettipoEvento();
+			}else{
+				op=0;
+			}
+		}
+		return op;
+	}
+	
+	String retornarDadosEsporte(String n){
+		String op="";
+		for(Evento esp: esporte){
+			if (esp.getNome().equals(n)){
+				op= esp.getDados();
 			}else{
 				op="nao encontrado";
 			}
 		}
 		return op;
 	}
+	
+	String retornarDadosFilme(String n){
+		String op="";
+		for(Evento f: filme){
+			if (f.getNome().equals(n)){
+				op= f.getDados();
+			}else{
+				op="nao encontrado";
+			}
+		}
+		return op;
+	}
+	
+	
+	
+	String retornarDadosPeca(String n){
+		String op="";
+		for(Evento p: peca){
+			if (p.getNome().equals(n)){
+				op= p.getDados();
+			}else{
+				op="nao encontrado";
+			}
+		}
+		return op;
+	}
+	
+	
+	String retornarDadosShow(String n){
+		String op="";
+		for(Evento s: show){
+			if (s.getNome().equals(n)){
+				op= s.getDados();
+			}else{
+				op="nao encontrado";
+			}
+		}
+		return op;
+	}
+	
+	
 }

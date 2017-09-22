@@ -6,22 +6,20 @@ public class Ingresso{
 	protected double precoEstudante;
 	protected double precoInteira;
 	private int id;
-	private String setor;
 	private int quantidadeParaVenda;
 
 	//contrutor de ingressos
-		public Ingresso(int id, double ingreEstudante, double ingreInteira, int ingrevendas, String setor){
+		public Ingresso(int id, double ingreEstudante, double ingreInteira, int ingrevendas){
 			this.id=id;
 			this.precoEstudante=precoEstudante;
 			this.precoInteira=precoInteira;
-			this.setor=setor;
 			this.quantidadeParaVenda=ingrevendas;
-			this.setor=setor;
+			
 		}
 	
 	
 	public String getDados(){
-			return "\nValor do ingresso- Estudante: "+ this.precoEstudante + "\nValor do ingresso- Inteira: "+this.precoInteira + "\nSetor: " +this.setor ;
+			return "\nValor do ingresso- Estudante: "+ this.precoEstudante + "\nValor do ingresso- Inteira: "+this.precoInteira ;
 				
 		}
 	int getquantIngresso(){

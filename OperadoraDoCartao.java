@@ -96,11 +96,11 @@ public class OperadoraDoCartao {
 			double valorInteira= ingrInteira * quantIngresso;
 			if (tipoIngresso == 1){
 				System.out.println("Valor total da compra= (R$)" +valorEstudante);
-				System.out.println("Valor parcelado (2x)= (R$)" +(valorEstudante/3));
+				System.out.println("Valor parcelado (3x)= (R$)" +(valorEstudante/3));
 				System.out.println("\n\nProcessando....\n...\n...\n...\nCompra efetuada com sucesso!\n\n");
 			}else if (tipoIngresso == 2){
 				System.out.println("Valor da compra= (R$)" +valorInteira);
-				System.out.println("Valor parcelado (2x)= (R$)" +(valorInteira/3));
+				System.out.println("Valor parcelado (3x)= (R$)" +(valorInteira/3));
 				System.out.println("\n\nProcessando....\n...\n...\n...\nCompra efetuada com sucesso!\n\n");
 			}else{
 				System.out.println("Opção não existe! Digite uma opção válida!");
