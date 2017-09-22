@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Ingresso {
+public class Ingresso{
 	protected double precoEstudante;
 	protected double precoInteira;
 	private int id;
@@ -20,7 +20,7 @@ public class Ingresso {
 		}
 	
 	
-		String getDados(){
+	public String getDados(){
 			return "\nValor do ingresso- Estudante: "+ this.precoEstudante + "\nValor do ingresso- Inteira: "+this.precoInteira + "\nSetor: " +this.setor ;
 				
 		}

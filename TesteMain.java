@@ -1,11 +1,22 @@
 import java.util.Scanner;
-
+import static java.lang.System.out;
 /*
  * Para realizar os procedimentos utilizando o menu textual, favor realizar os seguintes passos:
- * Cadrastar-se (informando os seus dados)
- * Autenticar-se (com o login e a senha informada no cadastro
- * Cadastrar evento
- * Busque pelo evento através do nome dele
+ * 1)Cadrastar-se (informando os seus dados)
+ * 2)Autenticar-se (com o login e a senha informada no cadastro
+ * 3)Cadastrar evento
+ * 4)Busque pelo evento através do nome dele
+ * 5)Escolha comprar ingresso
+ * 6)Escolha o tipo de pagamento que deseja realizar
+ * 
+ * Se for cartão de crédito, seus dados já devem está cadastrado no sistema da operadora,
+ *  (por esse motivo o construtor da operadora foi iniciado com os dados do meu cartao, caso
+ *  os dados informados não sejam os passados no cosntrutor, uma mensagem será exibida 
+ *  informado que os dados do cartão são inválidos.
+ *  
+ *  Para comprar ingresso de um evento, é necessário sempre buscar por seu nome.
+ *  
+ *  
  */
 
 public class TesteMain {
@@ -100,7 +111,7 @@ public class TesteMain {
 													 System.out.println("Informe a quantidade de ingressos que deseja comprar: ");
 													 int quantingresso= entrada.nextInt();
 													 System.out.println("Informe o setor para o qual deseja comprar os ingressos: ");
-													 System.out.println(sis.retornarsetores(nomeEvento));
+													 System.out.println("Opção: "+sis.retornarsetores(nomeEvento));
 													 String setoringresso= entrada.next();
 													 System.out.println("Informe o tipo de ingresso que seja comprar: \n\n1-Estudante \n2-Inteira ");
 													 int tipoingresso= entrada.nextInt();
@@ -114,7 +125,7 @@ public class TesteMain {
 														 opCartao.validacaoCartao();
 														 System.out.println("Digite a opção desejada: ");
 														 int formaParcelamento= entrada.nextInt();
-														 opCartao.parcelamento(formaParcelamento,sis.retornarprecoEstudante(nomeEvento), sis.retornarprecoInteira(nomeEvento),quantingresso, tipoingresso){
+														 opCartao.parcelamento(formaParcelamento,sis.retornarprecoEstudante(nomeEvento), sis.retornarprecoInteira(nomeEvento),quantingresso, tipoingresso);
 																
 													 }else if (pagamento == 2) {
 														 sis.emissaaoDeBoleto(sis.retornarprecoEstudante(nomeEvento), sis.retornarprecoInteira(nomeEvento),quantingresso, tipoingresso);
@@ -257,3 +268,5 @@ public class TesteMain {
 	}
 
 }
+
+
