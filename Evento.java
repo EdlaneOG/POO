@@ -6,8 +6,8 @@ public class Evento {
 	private String dataDeRealizacao;
 	private String horario;
 	private String endereco;
-	protected float precoEstudante;
-	protected float precoInteira;
+	protected double precoEstudante;
+	protected double precoInteira;
 	private int ingreVendas;
 	private String setores;
 	
@@ -15,7 +15,7 @@ public class Evento {
 	
 	
 	//contrutor de evento
-	public Evento(String nome, int tipo, String dataDeRealizacao, String horario, String endereco, float precoEstudante, float preInteira, int ingreVendas, String setores){
+	public Evento(String nome, int tipo, String dataDeRealizacao, String horario, String endereco, double precoEstudante, double precoInteira, int ingreVendas, String setores){
 		this.nome= nome;
 		this.tipo= tipo;
 		this.dataDeRealizacao=dataDeRealizacao;
@@ -29,7 +29,7 @@ public class Evento {
 	
 	// retorna os dados informados sobre o evento
 	String getDados(){
-		return "\n\nDados do evento:\n \nNome: " + this.nome + "\nData de Realização: " + this.dataDeRealizacao + "\nHorário: " + this.horario + "\nEndereço: " + this.endereco + "\nValor do ingresso - Estudante: " + this.precoEstudante + "\nValor do ingresso - Inteira: " +this.precoInteira + "\n Qauntidade de ingresso para vendas: " +this.ingreVendas;
+		return "\n\nDados do evento:\n \nNome: " + this.nome + "\nData de Realização: " + this.dataDeRealizacao + "\nHorário: " + this.horario + "\nEndereço: " + this.endereco + "\nValor do ingresso - Estudante: " + this.precoEstudante + "\nValor do ingresso - Inteira: " +this.precoInteira;
 		}
 
 	//retorna o nome do evento
@@ -37,7 +37,18 @@ public class Evento {
 		return this.nome;
 	}			
 	
+	//retorna o preco para estudante
+		double getprecoEstudante(){
+			return this.precoEstudante;
+		}	
 		
+		
+	//retorna o preco do ingresso
+		double getprecoInteira(){
+			return this.precoInteira;
+		}	
+				
+				
 	// alterando o endereço do evento
 	void setEndereco(String end){
 		this.endereco= end;
@@ -53,7 +64,9 @@ public class Evento {
 		this.horario= data;
 	}
 	
-	
+	String getsetores(){
+		return this.setores;
+	}
 	
 	
 	

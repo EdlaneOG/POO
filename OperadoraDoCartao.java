@@ -43,6 +43,7 @@ public class OperadoraDoCartao {
 							    	int codigo= entrada.nextInt();
 							    	if (opCartao.getCodigo() == codigo){
 							    		sis.menuFormaDeParcelamento();
+							    		
 							    	}else{
 							    		System.out.println("Código de seguraça incorreto!");
 							    	} 		
@@ -61,61 +62,54 @@ public class OperadoraDoCartao {
 	 * classe.
 	 */
 	
-	void parcelamento(int formaParcelamento, float ingrEstudante, float ingrInteira, int quantIngresso){
+	void parcelamento(int formaParcelamento, double ingrEstudante, double ingrInteira, int quantIngresso, int tipoIngresso){
 		if(formaParcelamento == 1){
-			float valorEstudante= ingrEstudante * quantIngresso;
-			float valorInteira= ingrInteira * quantIngresso;
-			if (ingrEstudante != 0){
+			double valorEstudante= ingrEstudante * quantIngresso;
+			double valorInteira= ingrInteira * quantIngresso;
+			if (tipoIngresso == 1){
 				System.out.println("Valor da compra= (R$)" +valorEstudante);
 				System.out.println("Processando....\n...\n...\n...\n\n");
-			}else{
+			}else if (tipoIngresso == 2){
 				System.out.println("Valor da compra= (R$)" +valorInteira);
 				System.out.println("Processando....\n...\n...\n...\n\n");
+			}else{
+				System.out.println("Opção não existe! Digite uma opção válida!");
 			}
 			
 		}else if(formaParcelamento == 2){
-			float valorEstudante= ingrEstudante * quantIngresso;
-			float valorInteira= ingrInteira * quantIngresso;
-			if (ingrEstudante != 0){
+			double valorEstudante= ingrEstudante * quantIngresso;
+			double valorInteira= ingrInteira * quantIngresso;
+			if (tipoIngresso == 1){
 				System.out.println("Valor total da compra= (R$)" +valorEstudante);
 				System.out.println("Valor parcelado (2x)= (R$)" +(valorEstudante/2));
 				System.out.println("\n\nProcessando....\n...\n...\n...\n\n");
-			}else{
+			}else if (tipoIngresso == 2){
 				System.out.println("Valor da compra= (R$)" +valorInteira);
 				System.out.println("Valor parcelado (2x)= (R$)" +(valorInteira/2));
 				System.out.println("\n\nProcessando....\n...\n...\n...\n\n");
+			}else{
+				System.out.println("Opção não existe! Digite uma opção válida!");
 			}
 			
 		} else if(formaParcelamento == 3){
-			float valorEstudante= ingrEstudante * quantIngresso;
-			float valorInteira= ingrInteira * quantIngresso;
-			if (ingrEstudante != 0){
+			double valorEstudante= ingrEstudante * quantIngresso;
+			double valorInteira= ingrInteira * quantIngresso;
+			if (tipoIngresso == 1){
 				System.out.println("Valor total da compra= (R$)" +valorEstudante);
 				System.out.println("Valor parcelado (2x)= (R$)" +(valorEstudante/3));
 				System.out.println("\n\nProcessando....\n...\n...\n...\n\n");
-			}else{
+			}else if (tipoIngresso == 2){
 				System.out.println("Valor da compra= (R$)" +valorInteira);
 				System.out.println("Valor parcelado (2x)= (R$)" +(valorInteira/3));
 				System.out.println("\n\nProcessando....\n...\n...\n...\n\n");
+			}else{
+				System.out.println("Opção não existe! Digite uma opção válida!");
 			}
 		}else{
 			System.out.println("\nEste parcelamento não pode ser realizado");
 		}
 }
-	void emissaaoDeBoleto(){
-		System.out.println("\n================================================");
-		System.out.println("\n		Boleto bancário");
-		System.out.println("\n================================================");
-	//	float valorTotal=  (preco()*quantIngresso());
-		//chamar o atributo de preco na classe ingresso
-		System.out.println("\nValor(R$)= " + valorTotal);
-		System.out.println("\nData de Vencimento= 10/09/2017");
-		System.out.println("\nCódigo de barras");
-		System.out.println("------------------------------------------------------------");
-		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-		System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-
-	}
+	
 	
 	String getNome(){
 		return this.titular;

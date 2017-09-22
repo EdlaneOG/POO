@@ -1,5 +1,13 @@
 import java.util.Scanner;
 
+/*
+ * Para realizar os procedimentos utilizando o menu textual, favor realizar os seguintes passos:
+ * Cadrastar-se (informando os seus dados)
+ * Autenticar-se (com o login e a senha informada no cadastro
+ * Cadastrar evento
+ * Busque pelo evento através do nome dele
+ */
+
 public class TesteMain {
 
 	public static void main(String[] args) {
@@ -12,8 +20,8 @@ public class TesteMain {
 		 * Instanciei esse construtor de Evento pois quando "busco evento", 
 		 * eu retorno os dados do evento com "e.getDados()", e para isso eu precisava passar um evento "e"., 
 		 */
-		Evento e = new Evento( "Music Festival", 4, "08-09-2017", "21:30", "Av. Manoel Tavares");
-		/*
+		Evento e = new Evento( "Music Festival", 4, "08-09-2017", "21:30", "Av. Manoel Tavares", 10.00, 20.00,50,"Pista");
+		/*float precoEstudante, float preInteira, int ingreVendas, String setores
 		 * A finalidade de instanciar a opcaoCartao foi com o intuito de criar um banco
 		 * de dados de cartoes para a Operadora De Cartão (quando for realizada a compra via cartão, 
 		 * o teste pega esses dados passados abaixo e compara com os dados informados pelo cliente,
@@ -21,6 +29,7 @@ public class TesteMain {
 		 * uma mensagem dizendo que o cadastro não existe é exibida.  
 		 */
 		OperadoraDoCartao opCartao = new OperadoraDoCartao(11223344,"Edlane",555);
+		Ingresso ing = new Ingresso (1, 1, 1, 1,"--");
 		Scanner entrada = new Scanner(System.in);
 		
 		
@@ -56,7 +65,7 @@ public class TesteMain {
 					    	if( sis.autenticacaoSenha(senha) == 1){////se a senha estiver correta, faça:					    		
 					    		System.out.println("Usuário autenticado com sucesso!");
 					    		int opcao2=-1;
-					    		while (opcao2 != 5){ //enquanto a opcao for diferente de "voltar"
+					    		while (opcao2 != 4){ //enquanto a opcao for diferente de "voltar"
 										sis.menuSecundario();//só será exibido se a autenticação for válidada
 							    		System.out.println("Informe a opcão desejada: ");
 										opcao2= entrada.nextInt();
@@ -82,10 +91,19 @@ public class TesteMain {
 												/*
 												 * Comprando ingresso via cartao de crédito ou boleto
 												 */
+												 
+												 System.out.println("\n\nDeseja comprar ingresso? ");
 												 sis.menuIngresso();
-												 System.out.println("Deseja comprar ingresso? ");
+												 System.out.println("Digite a opção desejada ");
 												 int ingresso= entrada.nextInt();
 												 if (ingresso == 1){
+													 System.out.println("Informe a quantidade de ingressos que deseja comprar: ");
+													 int quantingresso= entrada.nextInt();
+													 System.out.println("Informe o setor para o qual deseja comprar os ingressos: ");
+													 System.out.println(sis.retornarsetores(nomeEvento));
+													 String setoringresso= entrada.next();
+													 System.out.println("Informe o tipo de ingresso que seja comprar: \n\n1-Estudante \n2-Inteira ");
+													 int tipoingresso= entrada.nextInt();
 													 sis.menuFormaDePagamento();
 													 System.out.println("Qual a opção desejada? ");
 													 int pagamento= entrada.nextInt();
@@ -94,11 +112,16 @@ public class TesteMain {
 													  */
 													 if (pagamento == 1){//Se for via cartão, faça:
 														 opCartao.validacaoCartao();
+														 System.out.println("Digite a opção desejada: ");
+														 int formaParcelamento= entrada.nextInt();
+														 opCartao.parcelamento(formaParcelamento,sis.retornarprecoEstudante(nomeEvento), sis.retornarprecoInteira(nomeEvento),quantingresso, tipoingresso){
+																
 													 }else if (pagamento == 2) {
-														 opCartao.emissaaoDeBoleto();
-														 
+														 sis.emissaaoDeBoleto(sis.retornarprecoEstudante(nomeEvento), sis.retornarprecoInteira(nomeEvento),quantingresso, tipoingresso);
 													 }
 													 
+												 }else{
+													 break;
 												 }
 											}else{
 												System.out.println("Nome incorreto ou evento não está cadastrado!");
@@ -151,9 +174,7 @@ public class TesteMain {
 									
 																	
 										/*
-										 * Alterando dados de evento
-										 * * Conforme a opcao for escolhida, o metodo setOpcao é chamado, 
-										 * realizando assim a alteração desejada.
+										 * Voltando para o menu anterior
 										 */
 									}else if (opcao2==5){
 											break;

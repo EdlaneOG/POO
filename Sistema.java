@@ -86,17 +86,18 @@ public class Sistema {
 			float ingreInteira= entrada.nextFloat();
 			System.out.println("Informe a quantidade de ingressos a serem vendidos: ");
 			int ingrevendas= entrada.nextInt();
-			System.out.println("Informe os setores que terão no local do evento: ");
+			System.out.println("Informe os setores que terão no local do evento (Ex.:setor1 setor2 setor3): ");
 			menuSetor();
 			String setores= entrada.next();
 			Evento e= new Evento(nome,tipo,dataDeRealizacao,horario,endereco, ingreEstudante, ingreInteira, ingrevendas, setores);
 			int id= r.nextInt(100); 
 			Ingresso i= new Ingresso(id,ingreEstudante, ingreInteira, ingrevendas, setores);
 			eventos.add(e);
+			
 			return "\n\n++++++++++++++++++++++++++++++++++++++\nCadastro realizado com sucesso!\n++++++++++++++++++++++++++++++++++++++";
 		}//String cadastrarEvento()
 		
-	
+		
 		
 		//Menu setor
 		void menuSetor(){
@@ -127,8 +128,7 @@ public class Sistema {
 		    	System.out.println("	1- Cadastrar evento		");
 		    	System.out.println("	2- Buscar evento	    ");
 		    	System.out.println("	3- Alterar dados- Cliente	");
-		    	System.out.println("	4- Alterar dados de evento  ");
-		    	System.out.println("	5- Voltar		        ");
+		    	System.out.println("	4- Voltar		        ");
 		}//void MenuSecundario()	
 
 	
@@ -170,6 +170,38 @@ public class Sistema {
 		System.out.println("1- Sim ");
 		System.out.println("2- Não ");
 	}		
+	
+	
+
+	/*
+	 * Só fazia sentido colocar esse método nesta classe, por isso tive que usar esses 
+	 * system.out.println aqui mesmo.
+	 * 
+	 */
+	void emissaaoDeBoleto(double ingrEstudante, double ingrInteira, int quantIngresso, int tipoIngresso){
+		System.out.println("\n================================================");
+		System.out.println("\n		Boleto bancário");
+		System.out.println("\n================================================");
+		double valorEstudante= ingrEstudante * quantIngresso;
+		double valorInteira= ingrInteira * quantIngresso;
+		if (tipoIngresso == 1){
+			System.out.println("\nValor total da compra (R$)= " + valorEstudante);
+			System.out.println("\nData de Vencimento= 26/09/2017				");
+			System.out.println("\nCódigo de barras								");
+			System.out.println("--------------------------------------------");
+			System.out.println("||||||||||||||||||||||||||||||||||||||||||||");
+			System.out.println("||||||||||||||||||||||||||||||||||||||||||||");
+		}else if (tipoIngresso == 2){
+			System.out.println("\nValor total da compra (R$)= " + valorInteira);
+			System.out.println("\nData de Vencimento= 26/09/2017				");
+			System.out.println("\nCódigo de barras' 							");
+			System.out.println("-------------------------------------------");
+			System.out.println("||||||||||||||||||||||||||||||||||||||||||||");
+			System.out.println("||||||||||||||||||||||||||||||||||||||||||||");
+		}else{
+			System.out.println("Opção não existe! Digite uma opção válida!");
+		}
+	}
 			
 	//verificando se o login informado é igual ao login cadastrado
 	int autenticacaoLogin(String lg){
@@ -225,6 +257,40 @@ public class Sistema {
 		return op;
 	}
 	
+	double retornarprecoEstudante(String n){
+		double op=100;
+		for(Evento e: eventos){
+			if (e.getNome().equals(n)){
+			op= e.getprecoEstudante();
+			}else{
+				op=0;
+			}
+		}
+		return op;
+	}
 	
 	
+	double retornarprecoInteira(String n){
+		double op=100;
+		for(Evento e: eventos){
+			if (e.getNome().equals(n)){
+			op= e.getprecoInteira();
+			}else{
+				op=0;
+			}
+		}
+		return op;
+	}
+	
+	String retornarsetores(String n){
+		String op="";
+		for(Evento e: eventos){
+			if (e.getNome().equals(n)){
+			op= e.getsetores();
+			}else{
+				op="nao encontrado";
+			}
+		}
+		return op;
+	}
 }

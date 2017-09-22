@@ -3,14 +3,14 @@ import java.util.Scanner;
 
 
 public class Ingresso {
-	protected float precoEstudante;
-	protected float precoInteira;
+	protected double precoEstudante;
+	protected double precoInteira;
 	private int id;
 	private String setor;
 	private int quantidadeParaVenda;
 
 	//contrutor de ingressos
-		public Ingresso(int id, float ingreEstudante, float ingreInteira, int ingrevendas, String setor){
+		public Ingresso(int id, double ingreEstudante, double ingreInteira, int ingrevendas, String setor){
 			this.id=id;
 			this.precoEstudante=precoEstudante;
 			this.precoInteira=precoInteira;
@@ -28,26 +28,28 @@ public class Ingresso {
 		return this. quantidadeParaVenda;
 	}
 	
-	float getPrecoEstudante(){
+	double getPrecoEstudante(){
 		return this.precoEstudante;
 	}
 	
-	float getPrecoInteira(){
+	double getPrecoInteira(){
 		return this.precoInteira;
 	}
 	
-	void setPrecoEstudante(float preEst){
+	void setPrecoEstudante(double preEst){
 		this.precoEstudante=preEst;
 	}
 	
-	void setPrecoInteira(float preInt){
+	void setPrecoInteira(double preInt){
 		this.precoInteira=preInt;
 	}
 	
-	int ingressosVendidos(){
+	int getingressosVendidos(){
 		int quant= (this.quantidadeParaVenda -1);
 		return quant;
 	}
 
+	
+	
 }
 
